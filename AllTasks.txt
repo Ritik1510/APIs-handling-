@@ -4,4 +4,19 @@
       -search by location 
       -search by pincode 
       -search by postoffice 
-      
+
+
+-- code from PostalDetContextProvider.jsx --
+   import React, { useState } from 'react';
+   import PostalDetContext from './PostDetContext';
+   
+   const PostalDetContextProvider = ({pincode}) => {
+      const [pincode, setPincode] = useState(null)
+      return(
+         <PostalDetContext.Provider value={{pincode, setPincode}}>
+            {pincode}
+         </PostalDetContext.Provider>
+      )
+   }
+   
+   export default PostalDetContextProvider

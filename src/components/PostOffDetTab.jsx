@@ -26,20 +26,13 @@ function PostOffDetTab() {
       setLoading(false);
    }
 
-
    const headers = [
       'Name',
-      'Block',
-      'Circle',
-      'Country',
-      'District',
-      'Division',
+      'BranchType',
       'Pincode',
-      'Region',
-      'State'
+      'District',
+      'Country',
    ];
-
-
 
    const handleChange = (event) => {
       setInputValue(event.target.value);
@@ -68,24 +61,22 @@ function PostOffDetTab() {
 
             <thead>
                <tr>
-                  {
-                     headers.map((header) => {
-                        return <th key={header}>{header}</th>
-                     })
-                  }
+                  {headers.map((header) => {
+                     return <th key={header}>{header}</th>
+                  })}
                </tr>
             </thead>
 
             <tbody>
-               {
-                  noOfPostO.map((item, index) => (
-                     <tr key={index}>
-                        {headers.map((header) => (
-                           <td key={header}>{item[ header ]}</td>
-                        ))}
-                     </tr>
-                  ))
-               }
+
+               {noOfPostO.map((item, index) => (
+                  <tr key={index}>
+                     {headers.map((header) => (
+                        <td key={header}>{item[ header ]}</td>
+                     ))}
+                  </tr>
+               ))}
+
             </tbody>
          </table>
       </>

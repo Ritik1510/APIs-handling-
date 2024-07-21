@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
+import PostalDetContext from '../context/PostDetContext'
 
 function SearchByPC() {
+   const [ inputValue, setInputValue ] = useState('');
+   // const { fetchPostOffDetails } = useContext(FetchPostalDetFuncContext);
+
+   const handleChange = (event) => {
+      setInputValue(event.target.value);
+   };
+
    return (
-      <div>
+      <PostalDetContext.Provider value={inputValue}>
+
          <div>
-            <h1>
-               <a href='#'>Search Post Office Details By PIN Code</a>
-            </h1>
+            <label>
+               Input:
+               <input type='number'
+                  value={inputValue}
+                  onChange={handleChange}
+               />
+            </label>
+            {/* <button onClick={fetchPostOffDetails}>Get Details</button> */}
          </div>
-      </div>
+
+      </PostalDetContext.Provider>
    )
 }
 
