@@ -39,12 +39,7 @@ function PostOffDetTab() {
       'State'
    ];
 
-   const styles = {
-      border: "2px solid gray",
-      padding: "2px",
-      borderRadius: "6px",
-      gap: "1px"
-   };
+
 
    const handleChange = (event) => {
       setInputValue(event.target.value);
@@ -75,7 +70,7 @@ function PostOffDetTab() {
                <tr>
                   {
                      headers.map((header) => {
-                        return <th key={header} style={styles}>{header}</th>
+                        return <th key={header}>{header}</th>
                      })
                   }
                </tr>
@@ -86,7 +81,7 @@ function PostOffDetTab() {
                   noOfPostO.map((item, index) => (
                      <tr key={index}>
                         {headers.map((header) => (
-                           <td key={header} style={styles}>{item[ header ]}</td>
+                           <td key={header}>{item[ header ]}</td>
                         ))}
                      </tr>
                   ))
