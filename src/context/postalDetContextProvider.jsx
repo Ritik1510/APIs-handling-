@@ -1,11 +1,12 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from "react";
 import axios from 'axios'
+import SearchByPC from '../components/SearchByPC'
+import PostalDetContext from "./PostDetContext";
 
-function PostOffDetTab() {
+const PostalDetContextProvider = ({ children }) => {
    const [ noOfPostO, setNoOfPostO ] = useState([]);
    const [ loading, setLoading ] = useState(false);
-   const [ inputValue, setInputValue ] = useState('');
+   const [ InputValue, setInput ] = useState('');
 
    const fetchPostOffDetails = async () => {
       setLoading(true);
@@ -34,28 +35,13 @@ function PostOffDetTab() {
       'Country',
    ];
 
-   const handleChange = (event) => {
-      setInputValue(event.target.value);
-   };
-
    return (
-      <>
+      <PostalDetContext.Provider value={{fetchPostOffDetails, InputValue, setInput}}>
          <div>
             {loading ? (<h2>Loading...</h2>) : (<h2>Number of postoffices are: {noOfPostO.length}</h2>)}
          </div>
 
-         <div>
-            <label>
-               Input:
-               <input
-                  type='number'
-                  value={inputValue}
-                  onChange={handleChange}
-               />
-            </label>
-
-            <button className='border-2' onClick={fetchPostOffDetails}>Search</button>
-         </div>
+         <SearchByPC />
 
          <table>
 
@@ -79,8 +65,8 @@ function PostOffDetTab() {
 
             </tbody>
          </table>
-      </>
+      </PostalDetContext.Provider>
    )
 }
 
-export default PostOffDetTab
+export default PostalDetContextProvider

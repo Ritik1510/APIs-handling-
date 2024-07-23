@@ -1,5 +1,4 @@
 import React from 'react'
-import SearchByPC from './SearchByPC'
 
 function Navbar() {
   return (
@@ -8,7 +7,6 @@ function Navbar() {
       <div><a href='#'>Search By Pincode</a></div>
       <div><a href='#'>Search By Post Office</a></div>
       <div><a href='#'>GitHub</a></div>
-      <SearchByPC />
     </div>
   )
 }

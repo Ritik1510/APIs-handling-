@@ -3,24 +3,26 @@ import PostalDetContext from '../context/PostDetContext'
 
 function SearchByPC() {
    const [ inputValue, setInputValue ] = useState('');
-   // const { fetchPostOffDetails } = useContext(FetchPostalDetFuncContext);
+   const {setInput} = useContext(PostalDetContext)
+   const {InputValue} = useContext(PostalDetContext)
 
-   const handleChange = (event) => {
-      setInputValue(event.target.value);
-   };
+   const handleSubmit = (e) => {
+      e.preventDefault()
+      setInput(inputValue)
+   }
 
    return (
-      <PostalDetContext.Provider value={inputValue}>
-
+      <PostalDetContext.Provider value={{inputValue}}>
          <div>
             <label>
                Input:
                <input type='number'
                   value={inputValue}
-                  onChange={handleChange}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  className='text-[#000]'
                />
             </label>
-            {/* <button onClick={fetchPostOffDetails}>Get Details</button> */}
+            <button className='' onClick={handleSubmit}>Get Details</button>
          </div>
 
       </PostalDetContext.Provider>
