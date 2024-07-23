@@ -1,0 +1,118 @@
+-. postel order distance cost calculator by looking their weight and distance
+-. with bind functionality of find your city postoffices 
+-. features- 
+      -search by location 
+      -search by pincode 
+      -search by postoffice 
+
+-------------------------------------------------------------------------------------------
+-- code from PostalDetContextProvider.jsx --
+   import React, { useState } from 'react';
+   import PostalDetContext from './PostDetContext';
+   
+   const PostalDetContextProvider = ({pincode}) => {
+      const [pincode, setPincode] = useState(null)
+      return(
+         <PostalDetContext.Provider value={{pincode, setPincode}}>
+            {pincode}
+         </PostalDetContext.Provider>
+      )
+   }
+   
+   export default PostalDetContextProvider
+
+---------------------------------------------------------------------------------------------
+-- input tag for postal code --
+
+   const handleChange = (event) => {
+      setInputValue(event.target.value);
+   };
+      <div>
+         <label>
+            Input:
+            <input
+               type='number'
+               value={inputValue}
+               onChange={handleChange}
+            />
+         </label>
+         <button className='border-2' onClick={fetchPostOffDetails}>Search</button>
+      </div>  
+
+--------------------------------------------------------------------------------------------------------
+--PostOffDetTable-- file code 
+import React from 'react'
+import { useState } from 'react'
+import axios from 'axios'
+import SearchByPC from './SearchByPC'
+import PostalDetContext from '../context/PostDetContext'
+
+function PostOffDetTab() {
+   const [ noOfPostO, setNoOfPostO ] = useState([]);
+   const [ loading, setLoading ] = useState(false);
+   const [ inputValue, setInputValue ] = useState('');
+
+   const fetchPostOffDetails = async () => {
+      setLoading(true);
+
+      try {
+         const response = await axios.get(`https://api.postalpincode.in/pincode/${inputValue}`)
+         if (response.data && Array.isArray(response.data) && response.data[ 0 ].PostOffice) {
+            setNoOfPostO(response.data[ 0 ].PostOffice);
+            console.log(response.data);
+         } else {
+            setNoOfPostO([])
+         }
+      }
+
+      catch (error) {
+         console.log("check, and fetching arror!!", error);
+      }
+      setLoading(false);
+   }
+
+   const headers = [
+      'Name',
+      'BranchType',
+      'Pincode',
+      'District',
+      'Country',
+   ];
+
+   return (
+      <PostalDetContext.Provider value={{fetchPostOffDetails}}>
+         <div>
+            {loading ? (<h2>Loading...</h2>) : (<h2>Number of postoffices are: {noOfPostO.length}</h2>)}
+         </div>
+
+         <SearchByPC />
+
+         <table>
+
+            <thead>
+               <tr>
+                  {headers.map((header) => {
+                     return <th key={header}>{header}</th>
+                  })}
+               </tr>
+            </thead>
+
+            <tbody>
+
+               {noOfPostO.map((item, index) => (
+                  <tr key={index}>
+                     {headers.map((header) => (
+                        <td key={header}>{item[ header ]}</td>
+                     ))}
+                  </tr>
+               ))}
+
+            </tbody>
+         </table>
+      </PostalDetContext.Provider>
+   )
+}
+
+export default PostOffDetTab
+
+---------------------------------------------------------------------------------------------------------------
