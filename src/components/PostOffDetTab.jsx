@@ -1,17 +1,18 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+import SearchByPC from './SearchByPC';
 
 function PostOffDetTab() {
    const [ noOfPostO, setNoOfPostO ] = useState([]);
    const [ loading, setLoading ] = useState(false);
-   const [ inputValue, setInputValue ] = useState('');
+   const [ childInputSearchByPC, setchildInputSearchByPC ] = useState('')
 
    const fetchPostOffDetails = async () => {
       setLoading(true);
 
       try {
-         const response = await axios.get(`https://api.postalpincode.in/pincode/${inputValue}`)
+         const response = await axios.get(`https://api.postalpincode.in/pincode/${childInputSearchByPC}`)
          if (response.data && Array.isArray(response.data) && response.data[ 0 ].PostOffice) {
             setNoOfPostO(response.data[ 0 ].PostOffice);
             console.log(response.data);
@@ -39,11 +40,9 @@ function PostOffDetTab() {
       'State'
    ];
 
-
-
-   const handleChange = (event) => {
-      setInputValue(event.target.value);
-   };
+   const handleChildInputvalue = (value) => {
+      setchildInputSearchByPC(value);
+    };
 
    return (
       <>
@@ -51,21 +50,12 @@ function PostOffDetTab() {
             {loading ? (<h2>Loading...</h2>) : (<h2>Number of postoffices are: {noOfPostO.length}</h2>)}
          </div>
 
-         <div>
-            <label>
-               Input:
-               <input
-                  type='number'
-                  value={inputValue}
-                  onChange={handleChange}
-               />
-            </label>
-
-            <button className='border-2' onClick={fetchPostOffDetails}>Search</button>
-         </div>
+         <SearchByPC
+            fetchFncProp={fetchPostOffDetails}
+            sendInputValueFromState={handleChildInputvalue}
+         />
 
          <table>
-
             <thead>
                <tr>
                   {
