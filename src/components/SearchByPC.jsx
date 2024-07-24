@@ -5,10 +5,12 @@ function SearchByPC() {
    const [ inputValue, setInputValue ] = useState('');
    const {setInput} = useContext(PostalDetContext)
    const {InputValue} = useContext(PostalDetContext)
+   const {fetchPostOffDetails} = useContext(PostalDetContext)
 
    const handleSubmit = (e) => {
       e.preventDefault()
       setInput(inputValue)
+      fetchPostOffDetails(); 
    }
 
    return (

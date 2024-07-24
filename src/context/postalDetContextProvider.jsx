@@ -12,7 +12,7 @@ const PostalDetContextProvider = ({ children }) => {
       setLoading(true);
 
       try {
-         const response = await axios.get(`https://api.postalpincode.in/pincode/${inputValue}`)
+         const response = await axios.get(`https://api.postalpincode.in/pincode/203202}`)
          if (response.data && Array.isArray(response.data) && response.data[ 0 ].PostOffice) {
             setNoOfPostO(response.data[ 0 ].PostOffice);
             console.log(response.data);
