@@ -1,24 +1,26 @@
 import './App.css'
 import Navbar from './components/Navbar'
 import PostOffDetTab from './components/PostOffDetTab'
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link
+} from 'react-router-dom';
+import SearchByPC from './components/SearchByPC';
+import Header from './components/header/Header';
 
 function App() {
   return (
     <>
-      <header className='h-20 w-screen bg-[#0098D3] grid px-4'>
-        <div>
-          <p className='text-[#fff] inline-block no-underline text-lg'>Find post offices of any area by just typing code of city!</p>
-        </div>
-        <Navbar />
-      </header>
-
-
-
-      <div className='grid place-content-center'>
+      <Header />
+      <Router>
+        <Routes>
+          <Route path='/components/SearchByPC' element={<SearchByPC/>}/>
+        </Routes>
         <PostOffDetTab />
-      </div>
+      </Router>
     </>
-
   )
 }
 
