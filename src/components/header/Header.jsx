@@ -18,7 +18,7 @@ function Header() {
                <p className='text-[#fff] inline-block no-underline text-lg'>Find post offices of any area by just typing code of city!</p>
             </div>
             <nav>
-               <ul>
+               <ul className='flex justify-between items-center'>
                   <li>
                      <Link to="/SearchByLocation">Search By Location</Link>
                   </li>
