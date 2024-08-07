@@ -1,32 +1,34 @@
 import React, { useState, useContext } from 'react'
 import PostalDetContext from '../context/PostDetContext'
 
-function SearchByPC() {
+function SearchByPC({ fetchFncProp, sendInputValueFromState}) {
    const [ inputValue, setInputValue ] = useState('');
-   const {setInput} = useContext(PostalDetContext)
-   const {InputValue} = useContext(PostalDetContext)
-   const {fetchPostOffDetails} = useContext(PostalDetContext)
 
-   const handleSubmit = (e) => {
-      e.preventDefault()
-      setInput(inputValue)
-      fetchPostOffDetails(); 
-   }
+   const handleChange = (event) => {
+      const value = event.target.value
+      setInputValue(value);
+      sendInputValueFromState(value); 
+   };
 
    return (
       <PostalDetContext.Provider value={{inputValue}}>
          <div>
-            <label>
-               Input:
-               <input type='number'
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  className='text-[#000]'
-               />
-            </label>
-            <button className='' onClick={handleSubmit}>Get Details</button>
-         </div>
+            <h1>
+               <a href='#'>Search Post Office Details By PIN Code</a>
+            </h1>
+            <div>
+               <label>
+                  Input:
+                  <input
+                     type='number'
+                     value={inputValue}
+                     onChange={handleChange}
+                  />
+               </label>
 
+               <button className='border-2' onClick={fetchFncProp}>Search</button>
+            </div>
+         </div>
       </PostalDetContext.Provider>
    )
 }

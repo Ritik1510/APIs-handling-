@@ -1,9 +1,10 @@
 -. postel order distance cost calculator by looking their weight and distance
--. with bind functionality of find your city postoffices 
+-. add bind functionality of find your city postoffices 
 -. features- 
       -search by location 
       -search by pincode 
       -search by postoffice 
+<<<<<<< HEAD
 
 -------------------------------------------------------------------------------------------
 -- code from PostalDetContextProvider.jsx --
