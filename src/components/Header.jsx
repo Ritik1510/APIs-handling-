@@ -1,13 +1,9 @@
 import React from 'react'
-import SearchByPC from '../SearchByPC'
-import SearchByLocation from '../SearchByLocation'
-import SearchByPostOffice from '../SearchByPostOffice'
 import {
    BrowserRouter as Router,
    Route,
    Routes,
-   Link,
-   NavLink
+   NavLink,
  } from 'react-router-dom';
 
 function Header() {
@@ -20,16 +16,16 @@ function Header() {
             <nav>
                <ul className='flex justify-between items-center'>
                   <li>
-                     <Link to="/SearchByLocation">Search By Location</Link>
+                     <NavLink className={() => {}} to="/">Home</NavLink>
                   </li>
                   <li>
-                     <Link to="/SearchByPC">Search By Pincode</Link>
+                     <NavLink to="/SearchByLocation">Search By Location</NavLink>
                   </li>
                   <li>
-                     <Link to="/SearchByPostOffice">Search By Post Office</Link>
+                     <NavLink to="/SearchByPC">Search By Pincode</NavLink>
                   </li>
                   <li>
-                     <NavLink className={() => {}} to="/Home">Home</NavLink>
+                     <NavLink to="/SearchByPostOffice">Search By Post Office</NavLink>
                   </li>
                </ul>
             </nav>

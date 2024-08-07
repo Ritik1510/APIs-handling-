@@ -1,15 +1,16 @@
 import './App.css'
-import Footer from './components/footer/FooterComp';
-import Header from './components/header/Header';
+import Header from './components/Header';
 import { Outlet } from 'react-router-dom';
-import FooterComp from './components/footer/FooterComp';
+import PostOffDetTab from './components/PostOffDetTab';
 
 function App() {
   return (
     <>
       <Header />
-      <Outlet /> 
-      <FooterComp /> 
+      <Outlet />
+      <div className=''>
+        <PostOffDetTab />
+      </div>
     </>
   )
 }

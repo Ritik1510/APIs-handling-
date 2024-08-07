@@ -9,8 +9,10 @@ import {
   Routes,
   Link
 } from 'react-router-dom';
+import Home from './components/Home.jsx'
+import SearchByLocation from './components/SearchByLocation.jsx'
 import SearchByPC from './components/SearchByPC.jsx'
-import Home from './components/home/Home.jsx'
+import SearchByPostOffice from './components/SearchByPostOffice.jsx'
 
 const router = createBrowserRouter([
   {
@@ -18,12 +20,20 @@ const router = createBrowserRouter([
     element: <App />, 
     children: [
       {
-        path: "home",
+        path: "/",
         element: <Home /> 
       },
       {
-        path: "searchByPC", 
+        path: "/searchByPC", 
         element: <SearchByPC /> 
+      }, 
+      {
+        path: "/SearchByLocation",
+        element: <SearchByLocation />
+      },
+      {
+        path: "/SearchByPostOffice",
+        element: <SearchByPostOffice />
       }
     ]
 
