@@ -1,5 +1,5 @@
 import react, { useState } from "react";
-
+import PostalDetContext from "../context/PostDetContext"
 
 function SearchByPC({ fetchFncProp, sendInputValueFromState}) {
    const [ inputValue, setInputValue ] = useState('');
@@ -9,9 +9,8 @@ function SearchByPC({ fetchFncProp, sendInputValueFromState}) {
       setInputValue(value);
       sendInputValueFromState(value); 
    };
-
    return (
-      <div>
+      <PostalDetContext.Provider value={{inputValue}}>
          <div>
             <h1>
                <a href='#'>Search Post Office Details By PIN Code</a>
@@ -29,7 +28,8 @@ function SearchByPC({ fetchFncProp, sendInputValueFromState}) {
                <button className='border-2' onClick={fetchFncProp}>Search</button>
             </div>
          </div>
-      </div>
+
+      </PostalDetContext.Provider>
    )
 }
 
