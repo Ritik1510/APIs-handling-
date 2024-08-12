@@ -30,46 +30,54 @@ function PostOffDetTab() {
 
    const headers = [
       'Name',
-      'BranchType',
-      'Pincode'
+      'Block',
+      'Circle',
+      'Country',
+      'District',
+      'Division',
+      'Pincode',
+      'Region',
+      'State'
    ];
 
    const handleChildInputvalue = (value) => {
       setchildInputSearchByPC(value);
-   };
+    };
 
    return (
       <>
-         <div className='grid place-content-center '>
-            <div>
-               {loading ? (<h1>Loading...</h1>) : (<h1>Number of postoffices are: {noOfPostO.length}</h1>)}
-            </div>
-            <div className='tableArea'>
-               <table>
-                  <thead>
-                     <tr>
-                        {
-                           headers.map((header) => {
-                              return <th key={header}>{header}</th>
-                           })
-                        }
-                     </tr>
-                  </thead>
-
-                  <tbody>
-                     {
-                        noOfPostO.map((item, index) => (
-                           <tr key={index}>
-                              {headers.map((header) => (
-                                 <td key={header}>{item[ header ]}</td>
-                              ))}
-                           </tr>
-                        ))
-                     }
-                  </tbody>
-               </table>
-            </div>
+         <div>
+            {loading ? (<h2>Loading...</h2>) : (<h2>Number of postoffices are: {noOfPostO.length}</h2>)}
          </div>
+
+         <SearchByPC
+            fetchFncProp={fetchPostOffDetails}
+            sendInputValueFromState={handleChildInputvalue}
+         />
+
+         <table>
+            <thead>
+               <tr>
+                  {
+                     headers.map((header) => {
+                        return <th key={header}>{header}</th>
+                     })
+                  }
+               </tr>
+            </thead>
+
+            <tbody>
+               {
+                  noOfPostO.map((item, index) => (
+                     <tr key={index}>
+                        {headers.map((header) => (
+                           <td key={header}>{item[ header ]}</td>
+                        ))}
+                     </tr>
+                  ))
+               }
+            </tbody>
+         </table>
       </>
    )
 }
