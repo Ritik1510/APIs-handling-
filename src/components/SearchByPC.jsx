@@ -29,7 +29,7 @@ function SearchByPC({ fetchFncProp, sendInputValueFromState }) {
             </label>
             <button className='border-2' onClick={fetchFncProp}>Search</button>
          </div>
-         
+
       </PostalDetContext.Provider>
    )
 }
