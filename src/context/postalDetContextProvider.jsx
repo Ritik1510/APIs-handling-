@@ -44,7 +44,6 @@ const PostalDetContextProvider = ({ children }) => {
          <SearchByPC />
 
          <table>
-
             <thead>
                <tr>
                   {headers.map((header) => {
@@ -54,7 +53,6 @@ const PostalDetContextProvider = ({ children }) => {
             </thead>
 
             <tbody>
-
                {noOfPostO.map((item, index) => (
                   <tr key={index}>
                      {headers.map((header) => (
@@ -62,7 +60,6 @@ const PostalDetContextProvider = ({ children }) => {
                      ))}
                   </tr>
                ))}
-
             </tbody>
          </table>
       </PostalDetContext.Provider>
