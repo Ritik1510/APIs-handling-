@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from 'axios'
-import SearchByPC from '../components/SearchByPC'
 import PostalDetContext from "./PostDetContext";
 
 const PostalDetContextProvider = ({ children }) => {
@@ -27,41 +26,12 @@ const PostalDetContextProvider = ({ children }) => {
       setLoading(false);
    }
 
-   const headers = [
-      'Name',
-      'BranchType',
-      'Pincode',
-      'District',
-      'Country',
-   ];
-
    return (
-      <PostalDetContext.Provider value={{fetchPostOffDetails, InputValue, setInput}}>
+      <PostalDetContext.Provider value={{fetchPostOffDetails, InputValue, setInput, noOfPostO}}>
          <div>
             {loading ? (<h2>Loading...</h2>) : (<h2>Number of postoffices are: {noOfPostO.length}</h2>)}
          </div>
-
-         <SearchByPC />
-
-         <table>
-            <thead>
-               <tr>
-                  {headers.map((header) => {
-                     return <th key={header}>{header}</th>
-                  })}
-               </tr>
-            </thead>
-
-            <tbody>
-               {noOfPostO.map((item, index) => (
-                  <tr key={index}>
-                     {headers.map((header) => (
-                        <td key={header}>{item[ header ]}</td>
-                     ))}
-                  </tr>
-               ))}
-            </tbody>
-         </table>
+         {children}
       </PostalDetContext.Provider>
    )
 }
