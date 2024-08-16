@@ -1,8 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import PostalDetContext from '../context/PostDetContext';
+import PostalDetContextProvider from '../context/postalDetContextProvider';
 
 function PostOfficeTable() {
-  const { dataFromAPI  }=  useContext(PostalDetContext)
+  const { noOfPostO, myName }=  useContext(PostalDetContext);
   
   const headers = [
     'Name',
@@ -11,10 +12,10 @@ function PostOfficeTable() {
     'District',
     'Country',
   ];
+  console.log(noOfPostO);
 
   return (
-    <>
-
+    <PostalDetContextProvider>
       <table className='border-2'>
         <thead>
           <tr>
@@ -25,7 +26,7 @@ function PostOfficeTable() {
         </thead>
 
         <tbody>
-          {dataFromAPI.map((item, index) => (
+          {noOfPostO.map((item, index) => (
             <tr key={index}>
               {headers.map((header) => (
                 <td key={header}>{item[header]}</td>
@@ -34,8 +35,8 @@ function PostOfficeTable() {
           ))}
         </tbody>
       </table>
-
-    </>
+      {myName()}
+    </PostalDetContextProvider>
   )
 }
 

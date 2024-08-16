@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react'
 import PostalDetContext from '../context/PostDetContext'
 import PostOfficeTable from './PostOfficeTable';
+import PostalDetContextProvider from '../context/postalDetContextProvider';
 
 function SearchByPC({ sendInputValueFromState }) {
    const [ inputValue, setInputValue ] = useState('');
-   const { fetchFncProp } = useContext(PostalDetContext)
+   const { fetchPostOffDetails } = useContext(PostalDetContext)
 
    const handleChange = (event) => {
       const value = event.target.value
@@ -12,9 +13,8 @@ function SearchByPC({ sendInputValueFromState }) {
       sendInputValueFromState(value);
    };
 
-   console.log(Date.now()); 
    return (
-      <PostalDetContext.Provider value={{ inputValue }}>
+      <PostalDetContextProvider>
          <div className='flex justify-center items-center'>
             <p>
                <a className='text-2xl' href='#'>Search Post Office Details By PIN Code</a>
@@ -30,13 +30,12 @@ function SearchByPC({ sendInputValueFromState }) {
                   placeholder='Pincode'
                />
             </label>
-            <button className='border-2' onClick={fetchFncProp}>Search</button>
+            <button className='border-2' onClick={fetchPostOffDetails}>Search</button>
          </div>
          <div className=''>
             <PostOfficeTable />
          </div>
-
-      </PostalDetContext.Provider>
+      </PostalDetContextProvider>
    )
 }
 
