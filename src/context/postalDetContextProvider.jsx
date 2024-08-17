@@ -15,7 +15,6 @@ const PostalDetContextProvider = ({ children }) => {
          const response = await axios.get(`https://api.postalpincode.in/pincode/203202`);
          if (response.data && Array.isArray(response.data) && response.data[0].PostOffice) {
             setNoOfPostO(response.data[0].PostOffice);
-            console.log(noOfPostO);
          } else {
             setNoOfPostO([])
          }
@@ -24,7 +23,8 @@ const PostalDetContextProvider = ({ children }) => {
       } finally {
          console.log("Fetching Process Completed !!")
       }
-
+      
+      console.log(noOfPostO)
       setLoading(false);
    }
 

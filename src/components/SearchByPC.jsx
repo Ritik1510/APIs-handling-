@@ -20,20 +20,22 @@ function SearchByPC({ sendInputValueFromState }) {
                <a className='text-2xl' href='#'>Search Post Office Details By PIN Code</a>
             </p>
          </div>
-         <div className='flex justify-center items-center border-2'>
-            <label>
-               Enter:
-               <input
-                  type='number'
-                  value={inputValue}
-                  onChange={handleChange}
-                  placeholder='Pincode'
-               />
-            </label>
-            <button className='border-2' onClick={fetchPostOffDetails}>Search</button>
-         </div>
-         <div className=''>
-            <PostOfficeTable />
+         <div className='flex justify-center gap-2'>
+            <div className='flex justify-center items-center'>
+               <PostOfficeTable />
+            </div>
+            <div className='flex justify-center items-center border-2'>
+               <label>
+                  Enter:
+                  <input
+                     type='number'
+                     value={inputValue}
+                     onChange={handleChange}
+                     placeholder='Pincode'
+                  />
+               </label>
+               <button className='border-2' onClick={fetchPostOffDetails}>Search</button>
+            </div>
          </div>
       </PostalDetContextProvider>
    )
