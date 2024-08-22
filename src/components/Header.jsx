@@ -4,7 +4,7 @@ import {
    Route,
    Routes,
    NavLink,
- } from 'react-router-dom';
+} from 'react-router-dom';
 
 function Header() {
    return (
@@ -13,10 +13,12 @@ function Header() {
             <div>
                <p className='text-[#fff] inline-block no-underline text-lg'>Find post offices of any area by just typing code of city!</p>
             </div>
+         </header>
+         <div>
             <nav>
                <ul className='flex justify-between items-center'>
                   <li>
-                     <NavLink className={() => {}} to="/">Home</NavLink>
+                     <NavLink className={() => { }} to="/">Home</NavLink>
                   </li>
                   <li>
                      <NavLink to="/SearchByLocation">Search By Location</NavLink>
@@ -29,7 +31,7 @@ function Header() {
                   </li>
                </ul>
             </nav>
-         </header>
+         </div>
       </>
    )
 }

@@ -24,7 +24,21 @@ Here How's we get the details<br>
 * Javascript 
 * React 
 
+### Pay attention while dealing with the API process.
+- Asynchronous requests to remote servers using the Fetch API:
+  - Asynchronous Requests
+  - Requesting and Handling Data
+- Handling responses and parsing data from API calls
+  - Importance of Handling API Responses and Parsing Data
+  - Techniques for accessing and extracting desired data from API responses
+  - Error handling strategies for API responses and handling non-successful requests
+- Implementing error handling and handling edge cases in API interactions
+  - Error handling in API interactions
+  - Handling edge cases in API interactions
+  - Retry mechanisms for network issues
 
+
+### Some methods are used in this web app 
 HERE HOW WE USE PROPS FOR DATA PASSING `FROM PARENT TO CHILD COMPONENT` <br>
 
 ```jsx

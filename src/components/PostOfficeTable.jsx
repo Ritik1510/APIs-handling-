@@ -1,21 +1,21 @@
 import React, { useContext } from 'react';
 import PostalDetContext from '../context/PostDetContext';
+import PostalDetContextProvider from '../context/postalDetContextProvider';
 
 function PostOfficeTable() {
-  const { noOfPostO }=  useContext(PostalDetContext);
+  const { noOfPostOff }=  useContext(PostalDetContext);
   
   const headers = [
     'Name',
-    'BranchType',
-    'Details'
+    'BranchType'
   ];
   
-  if(noOfPostO && noOfPostO > 0){
-    console.log(noOfPostO);
+  if(noOfPostOff && noOfPostOff > 0){
+    console.log(noOfPostOff);
   }
 
   return (
-    <>
+    <PostalDetContextProvider>
       <table className='border-2'>
         <thead className='gap-3'>
           <tr>
@@ -26,8 +26,8 @@ function PostOfficeTable() {
         </thead>
 
         <tbody>
-          {(noOfPostO && noOfPostO > 0)}
-          {noOfPostO.map((item, index) => (
+          {(noOfPostOff && noOfPostOff > 0)}
+          {noOfPostOff.map((item, index) => (
             <tr key={index}>
               {headers.map((header) => (
                 <td key={header}>{item[header]}</td>
@@ -36,7 +36,7 @@ function PostOfficeTable() {
           ))}
         </tbody>
       </table>
-    </>
+    </PostalDetContextProvider>
   )
 }
 

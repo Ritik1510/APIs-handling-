@@ -1,46 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import PostalDetContext from "./PostDetContext";
 
 const PostalDetContextProvider = ({ children }) => {
-   const [ noOfPostO, setNoOfPostO ] = useState([]);
+   const [ noOfPostOff, setNoOfPostO ] = useState([]);
    const [ loading, setLoading ] = useState(false);
-   const [ InputValue, setInput ] = useState('');
+   const [ InputValue, setInputValue ] = useState('');
 
    const fetchPostOffDetails = async () => {
-      console.log("Loading....")
+      console.log("Loading....");
       setLoading(true);
 
       try {
-         const response = await axios.get(`https://api.postalpincode.in/pincode/203202`);
-         if (response.data && Array.isArray(response.data) && response.data[0].PostOffice) {
-            setNoOfPostO(response.data[0].PostOffice);
+         const response = await axios.get(`https://api.postalpincode.in/pincode/${InputValue}`);
+
+         if (response.status !== 200) {
+            throw new Error('Request failed with status ' + response.status);
+         }
+
+         if (response.data && Array.isArray(response.data) && response.data[ 0 ].PostOffice) {
+            const data = response.data[ 0 ].PostOffice;
+            console.log('data: ', data);
+
+            if (data.length === 0) {
+               console.log('No Post Office data available');
+               setNoOfPostO([]);
+            } else {
+               setNoOfPostO(data);
+            }
+            console.log(noOfPostOff)
          } else {
-            setNoOfPostO([])
+            throw new Error('Request failed with status: ' + response.Message);
          }
       } catch (error) {
-         console.log("Check your internet connectivity, and fetching arror!!", error);
+         console.error('An error occurred:', error);
       } finally {
-         console.log("Fetching Process Completed !!")
+         console.log("Fetching Process Completed !!");
+         setLoading(false);
       }
-      
-      console.log(noOfPostO)
-      setLoading(false);
-   }
+   };
 
    const myName = () => {
-      console.log("hey i am comes from postalDetContextProvider! ");
+      console.log("hey i am comes from postalDetContextProvider! -- function for some test on contex");
    }
 
    return (
-      <PostalDetContext.Provider value={{ 
-         fetchPostOffDetails, 
-         myName, 
-         InputValue, 
-         setInput, 
-         noOfPostO, 
-         loading
-         }}>
+      <PostalDetContext.Provider value={{
+         fetchPostOffDetails,
+         noOfPostOff,
+         loading,
+         setInputValue
+      }}>
          {children}
       </PostalDetContext.Provider>
    )
