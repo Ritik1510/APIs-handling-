@@ -73,7 +73,8 @@ const GrandchildComponent = ({ message }) => {
 };
 
 // Child Component
-const ChildComponent = ({ message }) => {
+const ChildComponent = ({ message, passingFncProp }) => { //here we get the prop and then use anywhere, pass anywhere
+//we use passingFncProp rather then using actuall passed Fnc in parent comp 
   return (
     <div>
       <h2>Child Component</h2>
@@ -85,11 +86,18 @@ const ChildComponent = ({ message }) => {
 // Parent Component
 const ParentComponent = () => {
   const message = "Hello from Parent Component!";
+
+  const exampleFnc = () => {
+    return console.log("Hello Guys!")
+  }
   
   return (
     <div>
       <h1>Parent Component</h1>
-      <ChildComponent message={message} />
+      <ChildComponent 
+        message={message} 
+        passingFncProp={exampleFnc} //this prop is showing how to pass the fnc as prop
+      />
     </div>
   );
 };
