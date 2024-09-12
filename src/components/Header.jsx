@@ -14,8 +14,9 @@ function Header() {
                <p className='text-[#fff] inline-block no-underline text-lg'>Find post offices of any area by just typing code of city!</p>
             </div>
          </header>
-         <div>
-            <nav>
+         <div className='flex
+          justify-center items-center'>
+            <nav className='border-2 border-red-500 p-[1.5px] rounded-md w-1/2 block'>
                <ul className='flex justify-between items-center'>
                   <li>
                      <NavLink className={() => { }} to="/">Home</NavLink>

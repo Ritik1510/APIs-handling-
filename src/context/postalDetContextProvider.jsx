@@ -28,10 +28,10 @@ const PostalDetContextProvider = ({ children }) => {
             } else {
                setNoOfPostO(data);
             }
-            console.log(noOfPostOff)
          } else {
             throw new Error('Request failed with status: ' + response.Message);
          }
+         console.log(noOfPostOff)
       } catch (error) {
          console.error('An error occurred:', error);
       } finally {
@@ -41,7 +41,7 @@ const PostalDetContextProvider = ({ children }) => {
    };
 
    const myName = () => {
-      console.log("hey i am comes from postalDetContextProvider! -- function for some test on contex");
+      console.log("hey i am comes from postalDetContextProvider! -- function for some test on context");
    }
 
    return (

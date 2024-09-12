@@ -15,19 +15,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home /> 
+        element: <Home tabName="Home" /> 
       },
       {
         path: "/searchByPC", 
-        element: <SearchByPC /> 
+        element: <SearchByPC tabName="Search By Pincode"/> 
       }, 
       {
         path: "/SearchByLocation",
-        element: <SearchByLocation />
+        element: <SearchByLocation tabName="Search By Location"/>
       },
       {
         path: "/SearchByPostOffice",
-        element: <SearchByPostOffice />
+        element: <SearchByPostOffice tabName="Search By Post Office"/>
       }
     ]
 
