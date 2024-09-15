@@ -7,6 +7,8 @@ function PostOfficeTable({ noOfPostOff }) {
     'BranchType'
   ];
 
+  const detailsBtn = ['Details']; 
+
   if (noOfPostOff && noOfPostOff > 0) {
     console.log(noOfPostOff);
   }
@@ -19,16 +21,20 @@ function PostOfficeTable({ noOfPostOff }) {
             {headers.map((header) => {
               return <th key={header}>{header}</th>
             })}
+
+            {detailsBtn.map((detailsBtn) => {
+              return <th key={detailsBtn}>{detailsBtn}</th>
+            })}
           </tr>
         </thead>
 
         <tbody>
-          {(noOfPostOff && noOfPostOff > 0)}
           {noOfPostOff.map((item, index) => (
             <tr key={index}>
               {headers.map((header) => (
                 <td key={header}>{item[ header ]}</td>
               ))}
+              <td className='flex justify-center items-center'>{<a href='#'>i</a>}</td>
             </tr>
           ))}
         </tbody>
