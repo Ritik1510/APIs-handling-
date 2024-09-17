@@ -15,9 +15,9 @@ function PostOfficeTable({ noOfPostOff }) {
 
   return (
     <>
-      <table className='border-2'>
+      <table className=''>
         <thead className='gap-3'>
-          <tr>
+          <tr className='border px-8 py-8'>
             {headers.map((header) => {
               return <th key={header}>{header}</th>
             })}
@@ -30,11 +30,14 @@ function PostOfficeTable({ noOfPostOff }) {
 
         <tbody>
           {noOfPostOff.map((item, index) => (
-            <tr key={index}>
+            <tr 
+              key={index}
+              className='border px-8 py-8'
+            >
               {headers.map((header) => (
                 <td key={header}>{item[ header ]}</td>
               ))}
-              <td className='flex justify-center items-center'>{<a href='#'>i</a>}</td>
+              <td className='flex justify-center items-center'>{<a href='#'><i className="fas fa-file" style={{ color: '#7c8885' }}></i></a>}</td>
             </tr>
           ))}
         </tbody>

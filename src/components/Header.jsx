@@ -1,34 +1,31 @@
 import React from 'react'
 import {
    BrowserRouter as Router,
-   Route,
-   Routes,
    NavLink,
 } from 'react-router-dom';
 
 function Header() {
    return (
       <>
-         <header className='h-20 w-screen bg-[#0098D3] grid px-4'>
+         <header className='h-20 w-screen bg-[#0098D3] grid px-4 mb-1'>
             <div>
                <p className='text-[#fff] inline-block no-underline text-lg'>Find post offices details of any area by just bit of information!</p>
             </div>
          </header>
-         <div className='flex
-          justify-center items-center'>
-            <nav className='border-2 border-red-500 p-[1.5px] rounded-md w-1/2 block'>
-               <ul className='flex justify-between items-center'>
+         <div className='flex justify-start items-start w-screen border-solid border-[1px] rounded-lg border-stone-500'>
+            <nav className=''>
+               <ul className='flex justify-between items-center gap-8 p-2'>
                   <li>
-                     <NavLink className={() => { }} to="/">Home</NavLink>
+                    <span className=''><NavLink className={() => { }} to="/">Home</NavLink></span>
                   </li>
                   <li>
-                     <NavLink to="/SearchByLocation">Search By Location</NavLink>
+                     <span className=''><NavLink to="/SearchByLocation">Search By Location</NavLink></span>
                   </li>
                   <li>
-                     <NavLink to="/SearchByPC">Search By Pincode</NavLink>
+                     <span className=''><NavLink to="/SearchByPC">Search By Pincode</NavLink></span>
                   </li>
                   <li>
-                     <NavLink to="/SearchByPostOffice">Search By Post Office</NavLink>
+                     <span className=''><NavLink to="/SearchByPostOffice">Search By Post Office</NavLink></span>
                   </li>
                </ul>
             </nav>
