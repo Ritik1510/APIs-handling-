@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontSize: {
+        'responsive': ['base', { sm: 'lg', md: 'xl', lg: '2xl', xl: '3xl' }]
+      },
+    },
   },
   plugins: [],
 }
