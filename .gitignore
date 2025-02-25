@@ -22,3 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Dependencies 
+/vite.config.js
+/.env
+/tailwind.config.js
+/package-lock.json
+/package.json
+
+# Some files from the previous project
+
+/findCity.js
+/AllTasks.js
+/postOffDetTab_X_jsx.txt
