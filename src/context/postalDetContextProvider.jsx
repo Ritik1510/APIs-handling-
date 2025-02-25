@@ -31,6 +31,7 @@ const PostalDetContextProvider = ({ children }) => {
          } else {
             throw new Error('Request failed with status: ' + response.Message);
          }
+         
          console.log(noOfPostOff)
       } catch (error) {
          console.error('An error occurred:', error);
