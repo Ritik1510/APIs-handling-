@@ -1,3 +1,5 @@
+// this is sample code for PostOffDetTab component and may be we can use this for extra changes later!
+
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
