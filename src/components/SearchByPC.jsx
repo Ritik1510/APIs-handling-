@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import PostalDetContext from '../context/PostDetContext'
 import PostOfficeTable from './PostOfficeTable';
 import PostalDetContextProvider from '../context/postalDetContextProvider';

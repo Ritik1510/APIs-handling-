@@ -7,7 +7,7 @@ import {
 function Header() {
    return (
       <>
-         <header className='h-20 bg-[#0098D3] grid px-4 mb-1'>
+         <header className='h-20 bg-[#0098D3] grid px-4 mb-1 rounded'>
             <div>
                <p className='text-[#fff] inline-block no-underline text-lg'>Find post offices details of any area by just bit of information!</p>
             </div>

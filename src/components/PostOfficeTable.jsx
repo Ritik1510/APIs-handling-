@@ -15,7 +15,7 @@ function PostOfficeTable({ noOfPostOff }) {
 
   return (
     <>
-      <table className=''>
+      <table className='border m-1'>
         <thead className='gap-3'>
           <tr className='border px-8 py-8'>
             {headers.map((header) => {
