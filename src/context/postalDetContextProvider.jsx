@@ -3,51 +3,40 @@ import axios from 'axios';
 import PostalDetContext from "./PostDetContext";
 
 const PostalDetContextProvider = ({ children }) => {
-   const [ noOfPostOff, setNoOfPostO ] = useState([]);
+   const [ postOffices, setPostOffices ] = useState([]);
    const [ loading, setLoading ] = useState(false);
    const [ InputValue, setInputValue ] = useState('');
 
    const fetchPostOffDetails = async () => {
-      console.log("Loading....");
       setLoading(true);
 
       try {
          const response = await axios.get(`https://api.postalpincode.in/pincode/${InputValue}`);
-
          if (response.status !== 200) {
             throw new Error('Request failed with status ' + response.status);
          }
-
          if (response.data && Array.isArray(response.data) && response.data[ 0 ].PostOffice) {
             const data = response.data[ 0 ].PostOffice;
-            console.log('data: ', data);
-
             if (data.length === 0) {
-               console.log('No Post Office data available');
-               setNoOfPostO([]);
+               setPostOffices([]);
             } else {
-               setNoOfPostO(data);
+               setPostOffices(data);
             }
          } else {
             throw new Error('Request failed with status: ' + response.Message);
          }
          console.log(noOfPostOff)
       } catch (error) {
-         console.error('An error occurred:', error);
-      } finally {
-         console.log("Fetching Process Completed !!");
+          throw new Error('An error occured while get the request using axios...);
+      } finally { 
          setLoading(false);
       }
    };
-
-   const myName = () => {
-      console.log("hey i am comes from postalDetContextProvider! -- function for some test on context");
-   }
-
+   
    return (
       <PostalDetContext.Provider value={{
          fetchPostOffDetails,
-         noOfPostOff,
+         setPostO,
          loading,
          setInputValue
       }}>
